@@ -1,5 +1,13 @@
 export type AttendanceStatus = "present" | "absent";
 
+export interface User {
+  id: string;
+  username: string;
+  password?: string; // Stored in users database
+  name: string;
+  createdAt: string;
+}
+
 export interface Person {
   id: string;
   name: string;
@@ -14,6 +22,7 @@ export interface AttendanceRecord {
 export interface AttendanceList {
   id: string;
   name: string;
+  userId?: string;
   people: Person[];
   attendanceRecords: AttendanceRecord[];
   createdAt: string; // ISO 8601 string

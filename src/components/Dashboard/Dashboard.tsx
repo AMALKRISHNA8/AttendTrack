@@ -1,22 +1,27 @@
 import { useState } from "react";
-import type { AttendanceList } from "../../types";
+import type { AttendanceList, User } from "../../types";
 import ListCard from "./ListCard";
 import ConfirmModal from "../ConfirmModal";
 
 interface DashboardProps {
   lists: AttendanceList[];
+  currentUser?: User | null;
   onCreateNew: () => void;
   onOpenList: (listId: string) => void;
   onDeleteList: (listId: string) => void;
+  onLogout?: () => void;
 }
 
 export function Dashboard({
   lists,
+  currentUser,
   onCreateNew,
   onOpenList,
   onDeleteList,
+  onLogout,
 }: DashboardProps) {
   const [listToDelete, setListToDelete] = useState<AttendanceList | null>(null);
+  const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false);
 
   const totalMembersTracked = lists.reduce((sum, l) => sum + l.people.length, 0);
 
@@ -35,6 +40,16 @@ export function Dashboard({
         </div>
 
         <div className="dashboard-header-actions">
+          {currentUser && (
+            <div className="user-profile-badge">
+              <span className="user-avatar">{currentUser.name.charAt(0).toUpperCase()}</span>
+              <div className="user-info-text">
+                <span className="user-name">{currentUser.name}</span>
+                <span className="user-handle">@{currentUser.username}</span>
+              </div>
+            </div>
+          )}
+
           <button
             type="button"
             className="btn btn-primary create-button"
@@ -42,6 +57,17 @@ export function Dashboard({
           >
             + Create List
           </button>
+
+          {onLogout && (
+            <button
+              type="button"
+              className="btn btn-secondary btn-logout"
+              onClick={() => setShowLogoutModal(true)}
+              title="Sign out of your account"
+            >
+              Log Out
+            </button>
+          )}
         </div>
       </header>
 
@@ -109,6 +135,21 @@ export function Dashboard({
           }
         }}
         onCancel={() => setListToDelete(null)}
+      />
+
+      {/* Logout Confirmation Modal */}
+      <ConfirmModal
+        isOpen={showLogoutModal}
+        title="Log Out"
+        message="Are you sure you want to log out of AttendTrack?"
+        confirmLabel="Log Out"
+        cancelLabel="Stay Logged In"
+        isDestructive={false}
+        onConfirm={() => {
+          setShowLogoutModal(false);
+          onLogout?.();
+        }}
+        onCancel={() => setShowLogoutModal(false)}
       />
     </div>
   );
