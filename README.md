@@ -1,32 +1,45 @@
-# React + TypeScript + Vite
+# AttendTrack
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple and modern attendance tracking web application built with React and TypeScript.
 
-Currently, two official plugins are available:
+AttendTrack allows users to create attendance lists, manage people, record daily attendance, and view attendance information in an organized interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Create multiple attendance lists
+- Add and manage people
+- Mark people as Present or Absent
+- Track attendance by date
+- Store attendance data locally
+- View attendance history
+- Calculate attendance statistics
+- Edit and delete records
+- Responsive design for desktop and mobile
+- Clean and simple user interface
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+### Frontend
+- React
+- TypeScript
+- Vite
+- CSS
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Storage
+- Browser LocalStorage
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Project Structure
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+```text
+AttendTrack/
+├── public/
+├── src/
+│   ├── components/
+│   ├── App.tsx
+│   ├── App.css
+│   └── main.tsx
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
