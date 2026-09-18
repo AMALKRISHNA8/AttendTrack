@@ -1,78 +1,48 @@
-.page {
-  min-height: 100vh;
-  padding: 40px 24px;
+.add-person-row {
+  display: flex;
+  gap: 10px;
 }
 
-.back-button {
+.add-person-row input {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.add-button {
+  border: none;
+  border-radius: 10px;
+  padding: 0 20px;
+  background: #171717;
+  color: white;
+  font-weight: 600;
+}
+
+.people-list {
+  margin-top: 28px;
+}
+
+.people-list h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.person-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  background: #f7f8fa;
+  border-radius: 10px;
+}
+
+.remove-button {
   border: none;
   background: transparent;
-  color: #6b7280;
+  color: #dc2626;
   font-weight: 600;
 }
 
-.form-card {
-  max-width: 520px;
-  margin: 70px auto;
-  padding: 32px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-}
-
-.form-card h2 {
-  margin: 0 0 8px;
-  font-size: 26px;
-}
-
-.form-card p {
-  margin: 0 0 28px;
-  color: #6b7280;
-  line-height: 1.5;
-}
-
-.form-card label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.form-card input {
-  width: 100%;
-  padding: 13px 14px;
-  margin-bottom: 18px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  font: inherit;
-  outline: none;
-}
-
-.form-card input:focus {
-  border-color: #171717;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.primary-button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.list-card {
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 28px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-}
-
-.list-card h2 {
-  margin: 0 0 8px;
-}
-
-.list-card p {
-  margin: 0;
-  color: #6b7280;
+.save-button {
+  margin-top: 24px;
 }

@@ -1,10 +1,26 @@
 import { useState } from "react";
 import "./App.css";
 import CreateList from "./CreateList";
+import AddPeople from "./AddPeople";
 
 function App() {
   const [showCreateList, setShowCreateList] = useState(false);
+  const [showAddPeople, setShowAddPeople] = useState(false);
   const [listName, setListName] = useState("");
+  const [people, setPeople] = useState<string[]>([]);
+
+  if (showAddPeople) {
+    return (
+      <AddPeople
+        listName={listName}
+        onBack={() => setShowAddPeople(false)}
+        onSave={(newPeople) => {
+          setPeople(newPeople);
+          setShowAddPeople(false);
+        }}
+      />
+    );
+  }
 
   if (showCreateList) {
     return (
@@ -13,6 +29,7 @@ function App() {
         onCreate={(name) => {
           setListName(name);
           setShowCreateList(false);
+          setShowAddPeople(true);
         }}
       />
     );
@@ -38,7 +55,11 @@ function App() {
         {listName ? (
           <section className="list-card">
             <h2>{listName}</h2>
-            <p>Your attendance list has been created.</p>
+
+            <p>
+              {people.length}{" "}
+              {people.length === 1 ? "person" : "people"} added.
+            </p>
           </section>
         ) : (
           <section className="empty-state">
