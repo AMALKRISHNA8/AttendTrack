@@ -1,5 +1,4 @@
 # AttendTrack
-
 A simple and modern attendance tracking web application built with React and TypeScript.
 
 AttendTrack allows users to create attendance lists, manage people, record daily attendance, and view attendance information in an organized interface.
